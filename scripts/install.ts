@@ -1,9 +1,9 @@
-import { createWriteStream, existsSync, mkdirSync } from "fs";
+import { createWriteStream, existsSync, mkdirSync } from "node:fs";
 /* eslint-disable no-extra-boolean-cast */
 /* eslint-disable no-console */
-import { Readable } from "stream";
-import { finished } from "stream/promises";
-import type { ReadableStream } from "stream/web";
+import { Readable } from "node:stream";
+import { finished } from "node:stream/promises";
+import type { ReadableStream } from "node:stream/web";
 import { PREBUILD_DIR, getBinaryName, getPrebuiltBinaryPath } from "../utils";
 
 const VERSION = "0.1.0-rc.1";
