@@ -1,0 +1,41 @@
+name: Publish Package to JSR
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "The version to release. The version should be the same as version in package.json. For example, 0.1.0"
+        required: true
+jobs:
+  publish-jsr:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # The OIDC ID token is used for authentication with JSR.
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-tags: true
+          ref: ${{ github.event_name == 'release' && github.ref_name || github.event.inputs.version }}
+
+      # Install Bun.
+      - name: Install Bun
+        run: |
+          curl -fsSL https://bun.sh/install | bash
+          export PATH="$HOME/.bun/bin:$PATH"
+          # Append Bun's bin folder to the GitHub Actions PATH.
+          echo "$HOME/.bun/bin" >> $GITHUB_PATH
+          bun --version
+
+      - name: Install Dependencies
+        run: bun install
+
+      - name: Lint Code
+        run: bun lint
+
+      - name: Unit Tests
+        run: bun test:unit
+
+      - name: Publish JSR package
+        run: bunx jsr publish
