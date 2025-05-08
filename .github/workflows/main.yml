@@ -53,6 +53,7 @@ jobs:
         run: bun test:unit
 
       - name: Benchmark
+        if: matrix.settings.os == 'ubuntu-latest'
         run: bun benchmark
         env:
           # To write to PRs and commits
