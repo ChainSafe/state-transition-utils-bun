@@ -42,7 +42,6 @@ jobs:
           echo "$HOME/.bun/bin" >> $GITHUB_PATH
           bun --version
 
-      # (Optional) Install dependencies if you use bun install.
       - name: Install Dependencies
         run: bun install
 
