@@ -1,11 +1,11 @@
 {
 	"name": "@chainsafe/state-transition-utils-bun",
-  "version": "0.1.0",
+	"version": "0.1.0",
 	"module": "src/index.ts",
 	"type": "module",
-  "exports": {
-    ".": "./src/index.ts"
-  },
+	"exports": {
+		".": "./src/index.ts"
+	},
 	"devDependencies": {
 		"@types/bun": "latest",
 		"@types/js-yaml": "^4.0.9",
@@ -15,7 +15,7 @@
 		"@lodestar/params": "^1.27.0",
 		"@lodestar/state-transition": "^1.27.0",
 		"@lodestar/utils": "^1.27.0",
-    "jsr": "^0.13.4",
+		"jsr": "^0.13.4",
 		"tar": "^7.4.0",
 		"js-yaml": "^4.1.0"
 	},
